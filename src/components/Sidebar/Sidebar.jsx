@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Sidebar.css"
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-function Sidebar({isCollapsed,setIsCollapsed}) {
+function Sidebar({isCollapsed,setIsCollapsed,hamburgerActive,sethamburgerActive}) {
 const navigate=useNavigate();
 // useStates to control open close sidebar
 // const [isCollapsed, setIsCollapsed] = useState(false);
   const [openSublist, setOpenSublist] = useState(null);
+// Mobile responsive
+
 
 
 //   functions to handleSidebar open closed functionality
@@ -22,7 +24,11 @@ const toggleSidebar = () => {
 
 
   return (
-    <nav className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+    <nav className={`sidebar ${isCollapsed ? "collapsed" : ""} ${hamburgerActive?"mobile-active":""}`}>
+
+      <div className="mobile-device-cross-icon" onClick={()=>sethamburgerActive((prev)=>!prev)}>
+    <img src="./sidebar/icons/cross.svg" alt="" />
+      </div>
        <div 
       
        className="navbar-chevron-icon-container" onClick={()=>toggleSidebar()}>
@@ -50,14 +56,14 @@ const toggleSidebar = () => {
 
 <ol className="dashboard-sub-menu-list">
     {/* item-1 */}
-<li className="sub-menu-list-item">
+<li className="sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
 <NavLink to="/orders" className="dashboard-sub-menu-link" > 
 <img src="./sidebar/icons/orders.svg" alt="" />
 <span> orders</span>
 </NavLink>
 </li>
 {/* item-2 */}
-<li className="sub-menu-list-item item-2">
+<li className="sub-menu-list-item item-2" >
 <NavLink className="dashboard-sub-menu-link" onClick={() => toggleSublist("menu")}  > 
 <img src="./sidebar/icons/menu.svg" alt="" />
 <span> Menu</span>
@@ -68,14 +74,14 @@ const toggleSidebar = () => {
 {/* sub-menu-list-2 */}
 {openSublist === "menu" && (
                     <ol className="sub-menu-list-2">
-                      <li className="sub-menu-list-2-item">
+                      <li className="sub-menu-list-2-item" onClick={(prev)=>sethamburgerActive(!prev)}>
                         <NavLink
                         to="products"
                         className="sub-menu-list-2-item-link">
                           Products
                         </NavLink>
                       </li>
-                      <li className="sub-menu-list-2-item">
+                      <li className="sub-menu-list-2-item" onClick={(prev)=>sethamburgerActive(!prev)}>
                         <NavLink 
                         to="/collection"
                         className="sub-menu-list-2-item-link">Collections</NavLink>
@@ -101,28 +107,28 @@ Customers
 </NavLink>
 {/* customers specific sub menu-list */}
 <ol className="customers-sub-menu-list">
-<li className="customers-sub-menu-list-item">
+<li className="customers-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
     <NavLink to="/builder" className="customers-sub-menu-list-link" >
         <img src="./sidebar/icons/builder.svg" alt="" />
         <span>Builder</span>
     </NavLink>
 </li>
 {/* 2nd */}
-<li className="customers-sub-menu-list-item">
+<li className="customers-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
     <NavLink to="/location" className="customers-sub-menu-list-link">
         <img src="./sidebar/icons/location.svg" alt="" />
         <span>Location</span>
     </NavLink>
 </li>
 {/* third */}
-<li className="customers-sub-menu-list-item">
+<li className="customers-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
     <NavLink to="/employees" className="customers-sub-menu-list-link">
        <img src="./sidebar/icons/employees.svg" alt="" />
         <span>Employees</span>
     </NavLink>
 </li>
 {/* fourth */}
-<li className="customers-sub-menu-list-item">
+<li className="customers-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
     <NavLink to="/integration" className="customers-sub-menu-list-link">
         <img src="./sidebar/icons/integration.svg" alt="" />
         <span>Integration</span>
@@ -140,13 +146,13 @@ Customers
     {/* marketing sub-menu-list */}
     {openSublist === "marketing" && (
                     <ol className="marketing-sub-menu-list" >
-                      <li className="marketing-sub-menu-list-item">
-                        <NavLink to="/promotion">Promotion</NavLink>
+                      <li className="marketing-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
+                        <NavLink to="/promotion" >Promotion</NavLink>
                       </li>
-                      <li className="marketing-sub-menu-list-item">
+                      <li className="marketing-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
                         <NavLink to="/push-notification">Push notification</NavLink>
                       </li>
-                      <li className="marketing-sub-menu-list-item">
+                      <li className="marketing-sub-menu-list-item" onClick={(prev)=>sethamburgerActive(!prev)}>
                         <NavLink to="/discounts">Discounts</NavLink>
                       </li>
                     </ol>
@@ -161,7 +167,7 @@ Customers
 
 {/* Setting item */}
 
-<li>
+<li onClick={(prev)=>sethamburgerActive(!prev)}>
 <NavLink to="/settings" className="main-nav-link" style={{background:"none",color:"grey"}}>
 <img src="./sidebar/icons/setting.svg" alt="" />
 {!isCollapsed && <span>Setting</span>}

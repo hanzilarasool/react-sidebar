@@ -378,3 +378,41 @@ margin-top: 10px;
 .no-blue-active{
     background-color: rgb(208, 213, 221,0.09);
 }
+
+
+.mobile-device-cross-icon{
+    display: none;
+}
+@media screen and (max-width:653px) {
+    .mobile-device-cross-icon{
+        display: block;
+        cursor: pointer;
+    }
+  .sidebar{
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-active{
+    transform: translateX(0%);
+  }
+  .navbar-chevron-icon-container{
+    display: none;
+  }
+  .header{
+    display: none;
+  }
+  .section-1{
+    margin-top: 16px;
+  }
+  .mobile-device-cross-icon{
+    border: 1px solid #EAECF0;
+
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    img{
+        width: 21px;
+    }
+  }
+  }
