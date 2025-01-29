@@ -1,0 +1,11 @@
+.layout {
+    display: flex;
+    height: 100vh;
+  }
+  .page-content {
+    margin-left: 250px; /* Push content to the right of sidebar */
+    flex-grow: 1;
+    padding: 20px;
+    background: #fff;
+    /* background-color: red; */
+  }
