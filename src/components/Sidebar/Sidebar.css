@@ -36,11 +36,6 @@ cursor: pointer;
 
 
 
-
-
-
-
-
   .header{
     display: flex;
     align-items: center;
@@ -49,6 +44,7 @@ cursor: pointer;
   .section-1{
     width: 100%;
     /* background-color: rgb(109, 109, 95); */
+    /* height: 666px; */
   }
 
   .logo-name{
@@ -164,11 +160,12 @@ text-decoration-skip-ink: none;
 
 }
 .sub-menu-list-item.item-2 .chevron-down-icon{
+    pointer-events: none;
     position: absolute;
     right: 15px;
     top: 5px;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 
 }
 
@@ -252,12 +249,12 @@ background-color: #F8FAFC;
 
 }
 .customers-sub-menu-list-link-chevron-down{
-
+pointer-events: none;
     position: absolute;
     right: 15px;
     top: 5px;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 /* ----------------Marketing-submenu list------------- */
@@ -301,7 +298,8 @@ margin: 2px  0;
     
 }
 .profile-name{
-    width: 60%;
+    width: 70%;
+    /* background-color: aqua; */
    
     word-wrap: break-word; 
     overflow: hidden; 
@@ -309,4 +307,77 @@ margin: 2px  0;
 }
 .profile-name-container{
     width: 22%;
+}
+
+.sidebar-username{
+   
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
+}
+
+.sidebar-email{
+    font-family: var(--font-family);
+    color: var(--grey-color-nav-links);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
+}
+/* collapsed sidebar */
+
+.sidebar.collapsed {
+    width: 85px;
+}
+.sidebar.collapsed .navbar-chevron-icon-container{
+    transform: rotate(180deg);
+}
+
+.sidebar.collapsed .logo-name,
+.sidebar.collapsed .main-nav-link span,
+.sidebar.collapsed .dashboard-sub-menu-link span,
+.sidebar.collapsed .customers-sub-menu-list-link span,
+.sidebar.collapsed .profile-name,
+.sidebar.collapsed .customers-sub-menu-list-link-chevron-down,
+.sidebar.collapsed .chevron-down-icon
+{
+  display: none;
+}
+
+/* adjusting the vertical alignment of nav-links */
+.sidebar.collapsed .dashboard-sub-menu-list,
+.sidebar.collapsed .customers-sub-menu-list {
+    margin-left: 0px;
+}
+
+
+
+/*adjusting profile */
+.sidebar.collapsed .profile-section{
+display: flex;
+justify-content: center;
+margin-top: 10px;
+}
+
+/* hide subLists on collapsed navbar */
+.sidebar.collapsed .marketing-sub-menu-list,
+.sidebar.collapsed .sub-menu-list-2
+{
+    display: none;
+}
+.main-nav-link:hover{
+    opacity: 0.9;
+ 
+}
+/* for customer navlink when active */
+.no-blue-active{
+    background-color: rgb(208, 213, 221,0.09);
 }
